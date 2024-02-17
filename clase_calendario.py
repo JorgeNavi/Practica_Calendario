@@ -82,14 +82,26 @@ class Dia:
             self.weekday = 'viernes'
         
         return self.weekday
+    
+    def arreglar_valores_mes_y_año(self):
+        """
+        al usar calcular_dia_semana, si el mes es enero o febrero, al imprimir la info se le resta 1 al año y se le suma 12 al mes.
+        aqui se arregal para que en la info aparezca bien
+        """
+        if self.month == 13 or self.month == 14:
+            self.month = self.month - 12
+            self.year = self.year + 1
+       
+
 
         
 
-dia = Dia(1970, 1, 1)
+dia = Dia(2024, 2, 17)
 dia.validez_fecha()
 dia.validar_dias_en_meses()
 dia.calcular_dia_semana()
 dia.nombrar_dia_semana()
+dia.arreglar_valores_mes_y_año()
 print(dia.info())
 
 
