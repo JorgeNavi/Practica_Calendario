@@ -9,7 +9,7 @@ class Dia:
             raise ValueError('Introduzca una fecha válida')
     
     def info(self):
-        return f'El día {self.day} del {self.month} del año {self.year} cayó en {self.weekday}'
+        return f'El día {self.day} de {self.month} del año {self.year} fue {self.weekday}'
     
     def validez_fecha(self):
         if self.year < 0 or self.month < 1 or self.month > 12 or self.day < 1 or self.day > 31:
@@ -35,7 +35,7 @@ class Dia:
                 if self.day > 28 or self.day < 1:
                     raise ValueError('Introducir una fecha válida')
         else:
-            if self.day > 31 or self.day < 1:
+            if self.day > 30 or self.day < 1:
                 raise ValueError('Introducir una fecha válida')
         return True
 
@@ -65,6 +65,15 @@ class Dia:
         
         return self.weekday
     
+    def arreglar_valores_mes_y_año(self):
+        """
+        al usar calcular_dia_semana, si el mes es enero o febrero, al imprimir la info se le resta 1 al año y se le suma 12 al mes.
+        aqui se arregla para que en la info aparezca bien
+        """
+        if self.month == 13 or self.month == 14:
+            self.month = self.month - 12
+            self.year = self.year + 1
+    
     def nombrar_dia_semana(self):
         if self.weekday == 0:
             self.weekday = 'sábado'
@@ -78,30 +87,50 @@ class Dia:
             self.weekday = 'miércoles'
         elif self.weekday == 5:
             self.weekday = 'jueves'
-        elif self.weekday == 6:
+        else:
             self.weekday = 'viernes'
         
         return self.weekday
     
-    def arreglar_valores_mes_y_año(self):
-        """
-        al usar calcular_dia_semana, si el mes es enero o febrero, al imprimir la info se le resta 1 al año y se le suma 12 al mes.
-        aqui se arregla para que en la info aparezca bien
-        """
-        if self.month == 13 or self.month == 14:
-            self.month = self.month - 12
-            self.year = self.year + 1
+    def nombrar_meses(self):
+        if self.month == 1:
+            self.month = 'enero'
+        elif self.month == 2:
+            self.month = 'febrero'
+        elif self.month == 3:
+            self.month = 'marzo'
+        elif self.month == 4:
+            self.month = 'abril'
+        elif self.month == 5:
+            self.month = 'mayo'
+        elif self.month == 6:
+            self.month = 'junio'
+        elif self.month == 7:
+            self.month = 'julio'
+        elif self.month == 8:
+            self.month = 'agosto'
+        elif self.month == 9:
+            self.month = 'septiembre'
+        elif self.month == 10:
+            self.month = 'octubre'
+        elif self.month == 11:
+            self.month = 'noviembre'
+        else:
+            self.month = 'diciembre'
+    
+    
        
 
 
         
 
-dia = Dia(2024, 2, 17)
+dia = Dia(1996, 1, 30)
 dia.validez_fecha()
 dia.validar_dias_en_meses()
 dia.calcular_dia_semana()
-dia.nombrar_dia_semana()
 dia.arreglar_valores_mes_y_año()
+dia.nombrar_dia_semana()
+dia.nombrar_meses()
 print(dia.info())
 
 
