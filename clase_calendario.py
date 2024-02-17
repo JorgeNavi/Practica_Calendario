@@ -86,7 +86,7 @@ class Dia:
     def arreglar_valores_mes_y_año(self):
         """
         al usar calcular_dia_semana, si el mes es enero o febrero, al imprimir la info se le resta 1 al año y se le suma 12 al mes.
-        aqui se arregal para que en la info aparezca bien
+        aqui se arregla para que en la info aparezca bien
         """
         if self.month == 13 or self.month == 14:
             self.month = self.month - 12
