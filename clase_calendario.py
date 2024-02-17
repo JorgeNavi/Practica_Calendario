@@ -96,12 +96,7 @@ class Dia:
         
 
 
-
-
-
 dia = Dia()
-
-print(dia.es_bisiesto)
 
 
 
