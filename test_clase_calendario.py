@@ -27,3 +27,22 @@ def test_comprobar_dia_meses_y_anyos():
 
 def test_es_bisiesto():
     pass
+
+
+def calcular_dia_semana(self):
+        if self.year >= 2000 and self.month>2:
+            A = self.year%100
+            B = self.year//100
+            C = 2 - B + B//4
+            D = A//4
+            E = 13*(self.month+1)//5
+            F = A + C + D +E + self.day-1
+        else:
+            A = self.year%100
+            B = self.year//100
+            C = 2 - B + B//4
+            D = A//4
+            E = 13*(self.month+1)//5
+            F = A + C + D +E + self.day
+        
+        return F % 7
